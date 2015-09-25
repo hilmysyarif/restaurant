@@ -1,0 +1,20 @@
+.gallery-preview {
+	@include span(12);
+}
+
+.preview-image {
+	@include span(12);
+	margin: gutter(12) 0;
+
+	@media all and (min-width: 500px) {
+		@include gallery(6 of 12);
+	}
+
+	@media all and (min-width: 768px) {
+		@include gallery(4 of 12);
+	}
+
+	@media all and (min-width: 1200px) {
+		@include gallery(3 of 12);
+	}
+}

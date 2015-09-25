@@ -1,0 +1,9 @@
+.main-footer {
+	@include span(12);
+	text-align: center;
+	background-color: $footer-background-color;
+	height: $footer-height;
+	color: $footer-color;
+	line-height: $footer-height;
+	border-top: 1px solid #444444;
+}

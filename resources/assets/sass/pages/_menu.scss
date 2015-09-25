@@ -1,0 +1,132 @@
+.menu {
+	@include span(12);
+	background-color: $menu-background-color;
+	padding: gutter(12);
+
+	@media all and (min-width: 1200px) {
+		@include break;
+		padding: gutter(12) 0;
+		@include span(10 at 2 of 12);
+	}
+}
+
+.menu-nav {
+	@include span(12);
+	margin-bottom: gutter(12);
+	@include box-shadow($content-background-color);
+
+	@media all and (min-width: 768px) {
+		@include span(first 3);
+	}
+}
+
+.menu-nav__header {
+	@include span(12);
+	font-weight: bold;
+	background-color: $primary-color;
+	color: $secondary-font-color;
+	text-align: center;
+	border-bottom: 1px solid #444;
+	padding: gutter(12) 0;
+}
+
+.menu-nav__list {
+	@include span(12);
+	list-style-type: none;
+	background-color: $content-background-color;
+
+	li {
+		font-size: em(14);
+		white-space: nowrap;
+
+		@include with-layout($no-gutters) {
+			@include span(6);
+		}
+
+		//If the last child is odd, span full length rather than half
+		&:last-child:nth-child(odd) {
+			@include span(12);
+		}
+
+		@media all and (min-width: 400px) {
+			font-size: em(16);
+		}
+
+		@media all and (min-width: 768px) {
+			@include span(12);
+		}
+	}
+}
+
+.menu-nav__link {
+	border: 1px solid #797979;
+	text-align: center;
+	color: $primary-font-color;
+	font-weight: bold;
+	font-family: $open-sans;
+	display: block;
+	min-height: 50px;
+	line-height: 50px;
+	background-color: $content-background-color;
+
+	&.active, &:hover, &:focus {
+		text-decoration: none;
+		color: inherit;
+		background-color: darken($content-background-color, 10%);
+	}
+}
+
+.menu-section {
+	@include span(12);
+	background-color: $content-background-color;
+	@include box-shadow($content-background-color);
+
+	@media all and (min-width: 768px) {
+		@include span(last 9);
+	}
+}
+
+.menu-section__title {
+	font-weight: bold;
+}
+
+.menu-section__subtitle {
+	font-size: em($menu-subtitle-size);
+	padding-right: em(5);
+}
+
+.menu__items {
+	list-style-type: none;
+	margin: 0;
+	padding: gutter(12);
+}
+
+.menu__item {
+	@include span(12);
+	border-bottom: 1px solid $primary-color;
+	padding: em(12) 0;
+
+	&:last-child {
+		border-bottom: 0;
+	}
+}
+
+.item__title {
+	@include span(first 9);
+	font-size: em($item-title-size);
+	font-weight: bold;
+}
+
+.item__price {
+	@include span(last 3);
+	padding-right: em(5);
+	text-align: right;
+	font-weight: bold;
+}
+
+.item__description {
+	@include break;
+	@include span(12);
+	padding-right: em(5);
+	margin: 0;
+}

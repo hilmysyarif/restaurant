@@ -1,0 +1,125 @@
+.contact {
+	@include span(12);
+}
+
+.contact-reservation {
+	font-size: em(18);
+	padding: gutter(12);
+}
+
+.contact-form-wrapper, .contact-details-hours {
+	@include span(12);
+	padding: gutter(12);
+
+	@media all and (min-width: 600px) {
+		@include span(10 at 2 of 12);
+		@include break;
+	}
+}
+
+.response__hide {
+	display: none;
+}
+
+.content {
+	@include content-box;
+}
+
+.contact-form-wrapper {
+	@media all and (min-width: 1000px) {
+		@include span(first 7);
+		padding-right: 0;
+	}
+
+	@media all and (min-width: 1200px) {
+		@include span(6 at 2 of 12);
+	}
+}
+
+.contact-details-hours {
+	@media all and (min-width: 1000px) {
+		@include span(last 5);
+		@include nobreak;
+		padding-left: 0;
+	}
+
+	@media all and (min-width: 1200px) {
+		@include span(4 at 8 of 12);
+	}
+}
+
+.contact-form, .opening-hours, .contact-details {
+	padding: gutter(12);
+}
+
+.contact-details-wrapper {
+	margin-bottom: gutter(12);
+
+	@media all and (min-width: 768px) {
+		@include span(first 6);
+		@include break;
+	}
+
+	@media all and (min-width: 1000px) {
+		@include span(12);
+		@include break;
+	}
+}
+
+.opening-hours-wrapper {
+	@include span(12);
+	@include break;
+
+	@media all and (min-width: 768px) {
+		@include span(last 6);
+		@include nobreak;
+	}
+
+	@media all and (min-width: 1000px) {
+		@include span(12);
+		@include break;
+	}
+}
+
+.contact-details__group {
+	margin: gutter(12) 0;
+
+	.contact-details__label {
+		display: inline-block;
+		width: 70px;
+		font-weight: bold;
+		vertical-align: top;
+	}
+
+	.contact-details__text {
+		display: inline-block;
+	}
+}
+
+.opening-hours__group {
+	margin: gutter(12) 0;
+
+	.opening-hours__label {
+		display: inline-block;
+		width: 90px;
+		font-weight: bold;
+		vertical-align: top;
+	}
+
+	.opening-hours__text {
+		display: inline-block;
+	}
+}
+
+#map-canvas {
+	@include span(12);
+	@include break;
+	height: 400px;
+	width: 100%;
+}
+
+.marker-label-title {
+	font-size: em(18);
+	font-weight: bold;
+	margin: 0;
+}
