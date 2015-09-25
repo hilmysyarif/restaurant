@@ -14,4 +14,5 @@ The laravel back-end is primarily used as an API for the front-end code. It is p
 ## Contact
 
 Website: joshuayphuang.com
+
 Email: joshua.yp.huang@gmail.com
