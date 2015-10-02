@@ -34,7 +34,7 @@ var GalleryInput = React.createClass({
 						<ImageInput slug='gallerySeven' fileChange={this.fileChange} title='Gallery Image Seven' />
 						<ImageInput slug='galleryEight' fileChange={this.fileChange} title='Gallery Image Eight' />
 					</div>
-					<button className='btn btn-default' onClick={this.saveGallery} disabled={this.state.gallery.length===0}>Upload Images</button>
+					<button className='btn btn-default' onClick={this.saveGallery} disabled={this.state.gallery.length===0 || this.state.gallery.button.disabled}>{this.state.gallery.button.value}</button>
 				</div>
 
 			</div>

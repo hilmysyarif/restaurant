@@ -1,8 +1,11 @@
 .home {
-	@include span(12);
+	@include container;
+	@include break;
+	width: span(12);
+	max-width: 2000px;
 
 	@media all and (min-width: 1200px) {
-		@include span(10 at 2 of 12);
+		width: span(10 of 12);
 		@include break;
 	}
 }
@@ -58,7 +61,7 @@
 	}
 }
 
-.featured__item {
+.featured-item {
 	border: 3px solid $primary-color;
 	border-top: 0;
 
@@ -133,7 +136,7 @@
 	}
 }
 
-.featured__img-wrapper {
+.img-wrapper {
 	overflow: hidden;
 	height: 200px;
 	position: relative;
@@ -165,7 +168,7 @@
 	}
 }
 
-.featured__text {
+.featured-item__text {
 	color: $secondary-font-color;
 	font-weight: bold;
 	font-size: em($featured-font-size);

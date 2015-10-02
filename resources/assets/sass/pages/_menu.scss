@@ -1,12 +1,16 @@
 .menu {
-	@include span(12);
+	@include container;
+	@include break;
+	width: span(12);
+	max-width: 1600px;
 	background-color: $menu-background-color;
 	padding: gutter(12);
 
 	@media all and (min-width: 1200px) {
 		@include break;
 		padding: gutter(12) 0;
-		@include span(10 at 2 of 12);
+		width: span(10 of 12);
+		font-size: em(20);
 	}
 }
 

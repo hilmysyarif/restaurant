@@ -133,6 +133,7 @@ var ContactStore = {
 	sendForm: function() {
 		this.contactForm.button.value = 'Sending...';
 		this.contactForm.button.disabled = true;
+		this.trigger('change');
 		var self = this;
 
 		$.post("/contact/process-form", this.contactForm, function(data){

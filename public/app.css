@@ -6659,16 +6659,19 @@ ul {
   border-top: 1px solid #444444; }
 
 .home {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  clear: both;
   width: 100%;
-  float: left;
-  margin-left: 0;
-  margin-right: 0; }
+  max-width: 2000px; }
+  .home:after {
+    content: " ";
+    display: block;
+    clear: both; }
   @media all and (min-width: 1200px) {
     .home {
       width: 83.05085%;
-      float: left;
-      margin-left: 8.47458%;
-      margin-right: -100%;
       clear: both; } }
 
 .hero {
@@ -6746,13 +6749,13 @@ ul {
       padding: 0;
       padding-bottom: 1.69492%; } }
 
-.featured__item {
+.featured-item {
   border: 3px solid #272727;
   border-top: 0; }
-  .featured__item a {
+  .featured-item a {
     display: block;
     position: relative; }
-    .featured__item a:after {
+    .featured-item a:after {
       content: '\A';
       position: absolute;
       width: 100%;
@@ -6766,75 +6769,75 @@ ul {
       -ms-transition: all 0.3s;
       -o-transition: all 0.3s;
       transition: all 0.3s; }
-    .featured__item a:hover:after {
+    .featured-item a:hover:after {
       opacity: 1; }
   @media all and (min-width: 600px) {
-    .featured__item:first-child {
+    .featured-item:first-child {
       width: 100%;
       float: left;
       margin-left: 0;
       margin-right: 0; }
-    .featured__item:nth-child(2) {
+    .featured-item:nth-child(2) {
       clear: both;
       width: 50%;
       float: left;
       margin-left: 0;
       margin-right: -100%; }
-    .featured__item:nth-child(3) {
+    .featured-item:nth-child(3) {
       clear: none;
       width: 50%;
       float: left;
       margin-left: 50%;
       margin-right: -100%; }
-    .featured__item:last-child {
+    .featured-item:last-child {
       clear: both;
       width: 100%;
       float: left;
       margin-left: 0;
       margin-right: 0; } }
   @media all and (min-width: 768px) {
-    .featured__item {
+    .featured-item {
       -webkit-box-shadow: 0 2px 4px #cccccc;
       -moz-box-shadow: 0 2px 4px #cccccc;
       box-shadow: 0 2px 4px #cccccc;
       clear: both;
       margin-top: 1.69492%;
       border: 3px solid #272727; }
-      .featured__item:first-child {
+      .featured-item:first-child {
         width: 49.15254%;
         float: left;
         margin-left: 0;
         margin-right: -100%; }
-      .featured__item:nth-child(2) {
+      .featured-item:nth-child(2) {
         clear: none;
         width: 23.72881%;
         float: left;
         margin-left: 50.84746%;
         margin-right: -100%; }
-      .featured__item:nth-child(3) {
+      .featured-item:nth-child(3) {
         clear: none;
         width: 23.72881%;
         float: left;
         margin-left: 76.27119%;
         margin-right: -100%; }
-      .featured__item:last-child {
+      .featured-item:last-child {
         clear: both;
         width: 100%;
         float: left;
         margin-left: 0;
         margin-right: 0; } }
 
-.featured__img-wrapper {
+.img-wrapper {
   overflow: hidden;
   height: 200px;
   position: relative; }
   @media all and (min-width: 768px) {
-    .featured__img-wrapper {
+    .img-wrapper {
       height: 150px; } }
   @media all and (min-width: 1200px) {
-    .featured__img-wrapper {
+    .img-wrapper {
       height: 200px; } }
-  .featured__img-wrapper img {
+  .img-wrapper img {
     position: absolute;
     min-height: 100%;
     min-width: 100%;
@@ -6847,10 +6850,10 @@ ul {
     object-fit: cover;
     max-width: 125%; }
     @media all and (min-width: 400px) {
-      .featured__img-wrapper img {
+      .img-wrapper img {
         max-width: 100%; } }
 
-.featured__text {
+.featured-item__text {
   color: #fff;
   font-weight: bold;
   font-size: 1.375em;
@@ -6861,20 +6864,24 @@ ul {
   white-space: nowrap; }
 
 .menu {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  clear: both;
   width: 100%;
-  float: left;
-  margin-left: 0;
-  margin-right: 0;
+  max-width: 1600px;
   background-color: #f5f5f5;
   padding: 1.69492%; }
+  .menu:after {
+    content: " ";
+    display: block;
+    clear: both; }
   @media all and (min-width: 1200px) {
     .menu {
       clear: both;
       padding: 1.69492% 0;
       width: 83.05085%;
-      float: left;
-      margin-left: 8.47458%;
-      margin-right: -100%; } }
+      font-size: 1.25em; } }
 
 .menu-nav {
   width: 100%;
@@ -7010,41 +7017,32 @@ ul {
   padding-right: 0.3125em;
   margin: 0; }
 
-.awards {
-  width: 100%;
-  float: left;
-  margin-left: 0;
-  margin-right: 0; }
-
 .about {
-  width: 100%;
-  float: left;
-  margin-left: 0;
-  margin-right: 0;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   clear: both;
   padding: 1.69492%;
-  font-size: 1.125em; }
+  font-size: 1.125em;
+  width: 100%;
+  max-width: 1600px; }
+  .about:after {
+    content: " ";
+    display: block;
+    clear: both; }
   @media all and (min-width: 600px) {
     .about {
       width: 83.05085%;
-      float: left;
-      margin-left: 8.47458%;
-      margin-right: -100%;
       padding: 1.69492% 0; } }
   @media all and (min-width: 768px) {
     .about {
       width: 100%;
-      float: left;
-      margin-left: 0;
-      margin-right: 0;
       padding: 1.69492%; } }
   @media all and (min-width: 1200px) {
     .about {
       width: 83.05085%;
-      float: left;
-      margin-left: 8.47458%;
-      margin-right: -100%;
-      padding: 1.69492% 0; } }
+      padding: 1.69492% 0;
+      font-size: 1.25em; } }
 
 .about-content {
   width: 100%;
@@ -7151,6 +7149,18 @@ ul {
   margin-left: 0;
   margin-right: 0; }
 
+.contact-main {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 2000px;
+  text-align: center; }
+  .contact-main:after {
+    content: " ";
+    display: block;
+    clear: both; }
+
 .contact-reservation {
   font-size: 1.125em;
   padding: 1.69492%; }
@@ -7160,7 +7170,8 @@ ul {
   float: left;
   margin-left: 0;
   margin-right: 0;
-  padding: 1.69492%; }
+  padding: 1.69492%;
+  text-align: left; }
   @media all and (min-width: 600px) {
     .contact-form-wrapper, .contact-details-hours {
       width: 83.05085%;

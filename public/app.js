@@ -25170,6 +25170,7 @@ var ContactStore = {
 	sendForm: function sendForm() {
 		this.contactForm.button.value = 'Sending...';
 		this.contactForm.button.disabled = true;
+		this.trigger('change');
 		var self = this;
 
 		$.post("/contact/process-form", this.contactForm, function (data) {
@@ -25428,7 +25429,7 @@ var About = React.createClass({
 			'div',
 			{ className: 'about' },
 			React.createElement(
-				'div',
+				'section',
 				{ className: 'about-content' },
 				React.createElement(AboutBlock, { title: this.state.aboutUs.title, text: this.state.aboutUs.text }),
 				React.createElement(AboutBlock, { title: this.state.philosophy.title, text: this.state.philosophy.text })
@@ -25444,7 +25445,7 @@ var AboutBlock = React.createClass({
 
 	render: function render() {
 		return React.createElement(
-			'div',
+			'article',
 			{ className: 'about-block' },
 			React.createElement(
 				'h2',
@@ -25482,7 +25483,7 @@ var Gallery = React.createClass({
 			return React.createElement(GalleryItem, { image: value, key: index });
 		});
 		return React.createElement(
-			'div',
+			'section',
 			{ className: 'gallery' },
 			React.createElement(
 				'h2',
@@ -25513,22 +25514,18 @@ var GalleryItem = React.createClass({
 	closeModal: function closeModal() {
 		this.setState({ modalIsOpen: false });
 	},
-	formatSrcset: function formatSrcset(img) {
-		return img.size_600 + ' 600w, ' + img.size_1200 + ' 1200w, ' + img.size_2000 + ' 2000w, ' + img.original;
-	},
 	render: function render() {
-		var srcset = this.formatSrcset(this.props.image);
 		return React.createElement(
 			'div',
 			{ className: 'gallery-item' },
-			React.createElement('img', { srcSet: srcset, id: this.props.image.slug, onClick: this.openModal, sizes: '(min-width: 768px) 25vw, (min-width: 450px) 50vw, 100vw' }),
+			React.createElement('img', { src: this.props.image.size_600, id: this.props.image.slug, onClick: this.openModal }),
 			React.createElement(
 				Modal,
 				{ isOpen: this.state.modalIsOpen, onRequestClose: this.closeModal, className: 'gallery-item__modal' },
 				React.createElement(
 					'div',
 					{ className: 'gallery-item__modal-inner' },
-					React.createElement('img', { src: this.props.image.original }),
+					React.createElement('img', { src: this.props.image.size_2000 }),
 					React.createElement(
 						'span',
 						{ className: 'gallery-item__close', onClick: this.closeModal },
@@ -25562,12 +25559,16 @@ var Contact = React.createClass({
 		return React.createElement(
 			'div',
 			{ className: 'contact' },
-			React.createElement(ContactForm, null),
 			React.createElement(
 				'div',
-				{ className: 'contact-details-hours' },
-				React.createElement(ContactDetails, { details: this.state }),
-				React.createElement(OpeningHours, { hours: this.state.hours })
+				{ className: 'contact-main' },
+				React.createElement(ContactForm, null),
+				React.createElement(
+					'section',
+					{ className: 'contact-details-hours' },
+					React.createElement(ContactDetails, { details: this.state }),
+					React.createElement(OpeningHours, { hours: this.state.hours })
+				)
 			),
 			React.createElement(GoogleMap, null)
 		);
@@ -25583,7 +25584,7 @@ var ContactDetails = React.createClass({
 			'div',
 			{ className: 'contact-details-wrapper' },
 			React.createElement(
-				'div',
+				'article',
 				{ className: 'content' },
 				React.createElement(
 					'h2',
@@ -25904,7 +25905,7 @@ var OpeningHours = React.createClass({
 			'div',
 			{ className: 'opening-hours-wrapper' },
 			React.createElement(
-				'div',
+				'article',
 				{ className: 'content' },
 				React.createElement(
 					'h2',
@@ -26037,7 +26038,7 @@ var Featured = React.createClass({
 	},
 	render: function render() {
 		return React.createElement(
-			'div',
+			'section',
 			{ className: 'featured' },
 			React.createElement(FeaturedItem, { id: 'homeFeaturedOne', sizes: '(min-width: 768px) 50vw, 100vw', img: this.state.homeFeaturedOne, text: 'Our Award Winning Menu', url: '/menu' }),
 			React.createElement(FeaturedItem, { id: 'homeFeaturedTwo', sizes: '(min-width: 768px) 25vw, (min-width: 600px) 50vw, 100vw', img: this.state.homeFeaturedTwo, text: 'Find Us', url: '/contact' }),
@@ -26052,23 +26053,23 @@ var FeaturedItem = React.createClass({
 	displayName: 'FeaturedItem',
 
 	formatSrcSet: function formatSrcSet(img) {
-		return img.size_600 + ' 600w, ' + img.size_1200 + ' 1200w, ' + img.size_2000 + ' 2000w, ' + img.original;
+		return img.size_600 + ' 600w, ' + img.size_1200 + ' 1200w, ' + img.size_2000 + ' 2000w';
 	},
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ className: 'featured__item' },
+			{ className: 'featured-item' },
 			React.createElement(
 				Link,
 				{ to: this.props.url },
 				React.createElement(
 					'div',
-					{ className: 'featured__img-wrapper' },
+					{ className: 'img-wrapper' },
 					React.createElement('img', { id: this.props.id, srcSet: this.formatSrcSet(this.props.img), sizes: this.props.sizes, alt: "Background Image for " + this.props.text })
 				),
 				React.createElement(
 					'h3',
-					{ className: 'featured__text' },
+					{ className: 'featured-item__text' },
 					this.props.text
 				)
 			)
@@ -26082,7 +26083,7 @@ var Hero = React.createClass({
 
 	render: function render() {
 		return React.createElement(
-			'div',
+			'section',
 			{ className: 'hero' },
 			React.createElement(
 				'h1',
@@ -26103,95 +26104,6 @@ var Home = React.createClass({
 			{ className: 'home' },
 			React.createElement(Hero, null),
 			React.createElement(Featured, null)
-		);
-	}
-});
-'use strict';
-
-var Login = React.createClass({
-	displayName: 'Login',
-
-	getInitialState: function getInitialState() {
-		return LoginStore.getLoginForm();
-	},
-	componentDidMount: function componentDidMount() {
-		LoginStore.bind('change', this.onChange);
-	},
-	componentWillUnmount: function componentWillUnmount() {
-		LoginStore.unbind('change', this.onChange);
-	},
-	onChange: function onChange() {
-		this.setState(LoginStore.getLoginForm());
-	},
-	changeEmail: function changeEmail(e) {
-		LoginActions.changeLoginEmail(e.target.value);
-	},
-	changePassword: function changePassword(e) {
-		LoginActions.changePassword(e.target.value);
-	},
-	onSubmit: function onSubmit(e) {
-		e.preventDefault();
-		LoginActions.login();
-	},
-	render: function render() {
-		return React.createElement(
-			'div',
-			{ className: 'login' },
-			React.createElement(
-				'div',
-				{ className: 'panel panel-default' },
-				React.createElement(
-					'h1',
-					{ className: 'panel-heading' },
-					'Login'
-				),
-				React.createElement(
-					'form',
-					{ noValidate: true, className: 'panel-body', onSubmit: this.onSubmit },
-					React.createElement(
-						'div',
-						{ className: 'form-group' },
-						React.createElement(
-							'label',
-							{ htmlFor: 'email', className: 'control-label' },
-							'Email: '
-						),
-						React.createElement('input', {
-							type: 'email',
-							id: 'email',
-							className: 'form-control',
-							value: this.state.email,
-							onChange: this.changeEmail
-						})
-					),
-					React.createElement(
-						'div',
-						{ className: 'form-group' },
-						React.createElement(
-							'label',
-							{ htmlFor: 'password', className: 'control-label' },
-							'Password: '
-						),
-						React.createElement('input', {
-							type: 'password',
-							id: 'password',
-							className: 'form-control',
-							value: this.state.password,
-							onChange: this.changePassword
-						})
-					),
-					React.createElement('input', { type: 'submit', value: 'Login', className: 'btn btn-default' }),
-					React.createElement(
-						'div',
-						{ className: 'response-messages' },
-						React.createElement(
-							'span',
-							{ className: this.state.failed ? 'text-danger' : 'hidden' },
-							'Incorrect login details. Message joshua.yp.huang@gmail.com for a demo login'
-						)
-					)
-				)
-			)
 		);
 	}
 });
@@ -26335,6 +26247,95 @@ var MenuSection = React.createClass({
 				'ul',
 				{ className: 'menu__items' },
 				items
+			)
+		);
+	}
+});
+'use strict';
+
+var Login = React.createClass({
+	displayName: 'Login',
+
+	getInitialState: function getInitialState() {
+		return LoginStore.getLoginForm();
+	},
+	componentDidMount: function componentDidMount() {
+		LoginStore.bind('change', this.onChange);
+	},
+	componentWillUnmount: function componentWillUnmount() {
+		LoginStore.unbind('change', this.onChange);
+	},
+	onChange: function onChange() {
+		this.setState(LoginStore.getLoginForm());
+	},
+	changeEmail: function changeEmail(e) {
+		LoginActions.changeLoginEmail(e.target.value);
+	},
+	changePassword: function changePassword(e) {
+		LoginActions.changePassword(e.target.value);
+	},
+	onSubmit: function onSubmit(e) {
+		e.preventDefault();
+		LoginActions.login();
+	},
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ className: 'login' },
+			React.createElement(
+				'div',
+				{ className: 'panel panel-default' },
+				React.createElement(
+					'h1',
+					{ className: 'panel-heading' },
+					'Login'
+				),
+				React.createElement(
+					'form',
+					{ noValidate: true, className: 'panel-body', onSubmit: this.onSubmit },
+					React.createElement(
+						'div',
+						{ className: 'form-group' },
+						React.createElement(
+							'label',
+							{ htmlFor: 'email', className: 'control-label' },
+							'Email: '
+						),
+						React.createElement('input', {
+							type: 'email',
+							id: 'email',
+							className: 'form-control',
+							value: this.state.email,
+							onChange: this.changeEmail
+						})
+					),
+					React.createElement(
+						'div',
+						{ className: 'form-group' },
+						React.createElement(
+							'label',
+							{ htmlFor: 'password', className: 'control-label' },
+							'Password: '
+						),
+						React.createElement('input', {
+							type: 'password',
+							id: 'password',
+							className: 'form-control',
+							value: this.state.password,
+							onChange: this.changePassword
+						})
+					),
+					React.createElement('input', { type: 'submit', value: 'Login', className: 'btn btn-default' }),
+					React.createElement(
+						'div',
+						{ className: 'response-messages' },
+						React.createElement(
+							'span',
+							{ className: this.state.failed ? 'text-danger' : 'hidden' },
+							'Incorrect login details. Message joshua.yp.huang@gmail.com for a demo login'
+						)
+					)
+				)
 			)
 		);
 	}

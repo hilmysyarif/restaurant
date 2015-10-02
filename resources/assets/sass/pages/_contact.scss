@@ -2,6 +2,13 @@
 	@include span(12);
 }
 
+.contact-main {
+	@include container;
+	width: span(12);
+	max-width: 2000px;
+	text-align: center;
+}
+
 .contact-reservation {
 	font-size: em(18);
 	padding: gutter(12);
@@ -10,6 +17,7 @@
 .contact-form-wrapper, .contact-details-hours {
 	@include span(12);
 	padding: gutter(12);
+	text-align: left;
 
 	@media all and (min-width: 600px) {
 		@include span(10 at 2 of 12);

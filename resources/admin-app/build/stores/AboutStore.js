@@ -9,7 +9,11 @@ var AboutStore = {
 		galleryFive: {},
 		gallerySix: {},
 		gallerySeven: {},
-		galleryEight: {}
+		galleryEight: {},
+		button: {
+			value: 'Upload Images',
+			disabled: true
+		}
 	},
 	loadGallery: function loadGallery() {},
 	getGallery: function getGallery() {
@@ -17,6 +21,9 @@ var AboutStore = {
 	},
 	saveGallery: function saveGallery() {
 		var data = new FormData();
+		this.gallery.button.value = 'Uploading...';
+		this.gallery.button.disabled = true;
+		this.trigger('change');
 		var self = this;
 
 		$.each(this.gallery, function (key, value) {
@@ -44,9 +51,15 @@ var AboutStore = {
 	},
 	changeFile: function changeFile(page, slug) {
 		this.gallery[slug] = page;
+		this.gallery.button.disabled = false;
 	},
 	clearGallery: function clearGallery() {
-		this.gallery = {};
+		this.gallery = {
+			button: {
+				value: 'Upload Images',
+				disabled: true
+			}
+		};
 	}
 };
 

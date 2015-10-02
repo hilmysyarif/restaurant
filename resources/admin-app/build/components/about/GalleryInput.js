@@ -49,8 +49,8 @@ var GalleryInput = React.createClass({
 				),
 				React.createElement(
 					'button',
-					{ className: 'btn btn-default', onClick: this.saveGallery, disabled: this.state.gallery.length === 0 },
-					'Upload Images'
+					{ className: 'btn btn-default', onClick: this.saveGallery, disabled: this.state.gallery.length === 0 || this.state.gallery.button.disabled },
+					this.state.gallery.button.value
 				)
 			)
 		);

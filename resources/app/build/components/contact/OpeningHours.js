@@ -8,7 +8,7 @@ var OpeningHours = React.createClass({
 			'div',
 			{ className: 'opening-hours-wrapper' },
 			React.createElement(
-				'div',
+				'article',
 				{ className: 'content' },
 				React.createElement(
 					'h2',

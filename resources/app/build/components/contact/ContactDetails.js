@@ -8,7 +8,7 @@ var ContactDetails = React.createClass({
 			'div',
 			{ className: 'contact-details-wrapper' },
 			React.createElement(
-				'div',
+				'article',
 				{ className: 'content' },
 				React.createElement(
 					'h2',

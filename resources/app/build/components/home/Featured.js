@@ -18,7 +18,7 @@ var Featured = React.createClass({
 	},
 	render: function render() {
 		return React.createElement(
-			'div',
+			'section',
 			{ className: 'featured' },
 			React.createElement(FeaturedItem, { id: 'homeFeaturedOne', sizes: '(min-width: 768px) 50vw, 100vw', img: this.state.homeFeaturedOne, text: 'Our Award Winning Menu', url: '/menu' }),
 			React.createElement(FeaturedItem, { id: 'homeFeaturedTwo', sizes: '(min-width: 768px) 25vw, (min-width: 600px) 50vw, 100vw', img: this.state.homeFeaturedTwo, text: 'Find Us', url: '/contact' }),

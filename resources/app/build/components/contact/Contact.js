@@ -20,12 +20,16 @@ var Contact = React.createClass({
 		return React.createElement(
 			'div',
 			{ className: 'contact' },
-			React.createElement(ContactForm, null),
 			React.createElement(
 				'div',
-				{ className: 'contact-details-hours' },
-				React.createElement(ContactDetails, { details: this.state }),
-				React.createElement(OpeningHours, { hours: this.state.hours })
+				{ className: 'contact-main' },
+				React.createElement(ContactForm, null),
+				React.createElement(
+					'section',
+					{ className: 'contact-details-hours' },
+					React.createElement(ContactDetails, { details: this.state }),
+					React.createElement(OpeningHours, { hours: this.state.hours })
+				)
 			),
 			React.createElement(GoogleMap, null)
 		);

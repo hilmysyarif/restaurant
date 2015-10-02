@@ -5,7 +5,7 @@ var AboutBlock = React.createClass({
 
 	render: function render() {
 		return React.createElement(
-			'div',
+			'article',
 			{ className: 'about-block' },
 			React.createElement(
 				'h2',

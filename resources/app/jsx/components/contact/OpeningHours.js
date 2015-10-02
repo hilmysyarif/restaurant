@@ -2,7 +2,7 @@ var OpeningHours = React.createClass({
 	render: function() {
 		return (
 			<div className='opening-hours-wrapper'>
-				<div className='content'>
+				<article className='content'>
 					<h2 className='title-block'>Opening Hours</h2>
 					<div className='opening-hours'>
 						<div className='opening-hours__group'>
@@ -34,7 +34,7 @@ var OpeningHours = React.createClass({
 							<div className='opening-hours__text'>{this.props.hours.sunday}</div>
 						</div>
 					</div>
-				</div>
+				</article>
 			</div>
 		)
 	}

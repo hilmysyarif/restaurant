@@ -54,7 +54,7 @@ class HomeController extends Controller
             $destination = public_path('images/upload/' . $folder . '/');
             $originalFile = $destination . $fileName;
             $widths = [2000, 1200, 600];
-            $relativePath = '\\images\\upload\\' . $folder . '\\';
+            $relativePath = '/images/upload/' . $folder . '/';
 
             $image->move($destination, $fileName);
            

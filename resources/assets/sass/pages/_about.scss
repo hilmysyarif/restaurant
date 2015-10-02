@@ -1,22 +1,25 @@
 .about {
-	@include span(12);
+	@include container;
 	@include break;
 	padding: gutter(12);
 	font-size: em(18);
+	width: span(12);
+	max-width: 1600px;
 
 	@media all and (min-width: 600px) {
-		@include span(10 at 2 of 12);
+		width: span(10 of 12);
 		padding: gutter(12) 0;
 	}
 
 	@media all and (min-width: 768px) {
-		@include span(12);
+		width: span(12);
 		padding: gutter(12);
 	}
 
 	@media all and (min-width: 1200px) {
-		@include span(10 at 2 of 12);
+		width: span(10 of 12);
 		padding: gutter(12) 0;
+		font-size: em(20);
 	}
 }
 

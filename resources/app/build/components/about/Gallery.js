@@ -25,7 +25,7 @@ var Gallery = React.createClass({
 			return React.createElement(GalleryItem, { image: value, key: index });
 		});
 		return React.createElement(
-			'div',
+			'section',
 			{ className: 'gallery' },
 			React.createElement(
 				'h2',

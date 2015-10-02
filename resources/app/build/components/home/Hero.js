@@ -5,7 +5,7 @@ var Hero = React.createClass({
 
 	render: function render() {
 		return React.createElement(
-			'div',
+			'section',
 			{ className: 'hero' },
 			React.createElement(
 				'h1',

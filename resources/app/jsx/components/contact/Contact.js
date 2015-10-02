@@ -15,10 +15,12 @@ var Contact = React.createClass({
 	render: function() {
 		return (
 			<div className='contact'>
-				<ContactForm />
-				<div className='contact-details-hours'>
-					<ContactDetails details={this.state} />
-					<OpeningHours hours={this.state.hours} />
+				<div className='contact-main'>
+					<ContactForm />
+					<section className='contact-details-hours'>
+						<ContactDetails details={this.state} />
+						<OpeningHours hours={this.state.hours} />
+					</section>
 				</div>
 				<GoogleMap />
 			</div>

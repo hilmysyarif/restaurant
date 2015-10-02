@@ -40,10 +40,10 @@ var About = React.createClass({
 	render: function() {
 		return (
 			<div className='about'>
-				<div className='about-content'>
+				<section className='about-content'>
 					<AboutBlock title={this.state.aboutUs.title} text={this.state.aboutUs.text} />
 					<AboutBlock title={this.state.philosophy.title} text={this.state.philosophy.text} />
-				</div>
+				</section>
 				<Gallery />
 			</div>
 		)

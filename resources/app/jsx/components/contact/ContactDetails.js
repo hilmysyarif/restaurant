@@ -2,7 +2,7 @@ var ContactDetails = React.createClass({
 	render: function() {
 		return (
 			<div className='contact-details-wrapper'>
-				<div className='content'>
+				<article className='content'>
 					<h2 className='title-block'>Contact Details</h2>
 					<div className='contact-details'>
 						<div className='contact-details__group'>
@@ -23,7 +23,7 @@ var ContactDetails = React.createClass({
 							</div>
 						</div>
 					</div>
-				</div>
+				</article>
 			</div>
 		)
 	}

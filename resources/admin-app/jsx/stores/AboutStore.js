@@ -8,6 +8,10 @@ var AboutStore = {
 		gallerySix: {}, 
 		gallerySeven: {}, 
 		galleryEight: {}, 
+		button: {
+			value: 'Upload Images',
+			disabled: true
+		}
 	},
 	loadGallery: function() {
 
@@ -17,6 +21,9 @@ var AboutStore = {
 	},
 	saveGallery: function() {
 		var data = new FormData();
+		this.gallery.button.value = 'Uploading...';
+		this.gallery.button.disabled = true;
+		this.trigger('change');
 		var self = this;
 
 		$.each(this.gallery, function(key, value) {
@@ -47,9 +54,15 @@ var AboutStore = {
 	},
 	changeFile: function(page, slug) {
 		this.gallery[slug] = page;
+		this.gallery.button.disabled = false;
 	},
 	clearGallery: function() {
-		this.gallery = {};
+		this.gallery = {
+			button: {
+				value: 'Upload Images',
+				disabled: true
+			}
+		};
 	}
 }
 

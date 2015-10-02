@@ -21,12 +21,12 @@ var Gallery = React.createClass({
 			return <GalleryItem image={value} key={index} />
 		});
 		return (
-			<div className='gallery'>
+			<section className='gallery'>
 				<h2 className='title-block'>Gallery</h2>
 				<div className='gallery-items'>
 					{items}
 				</div>
-			</div>
+			</section>
 		)
 	}
 });
