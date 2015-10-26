@@ -25003,8 +25003,14 @@ var AboutStore = {
 		slug: '',
 		id: ''
 	}],
-	aboutUs: ['Takapuna Beach Café is located on The Promenade at Takapuna beach with \n\t\tpanoramic views of Rangitoto & Waitemata Harbour.', 'We are committed to serving a menu for all occasions, freshly baked artisan bread & pastries, \n\t\tmulti award winning gelato & the best fish & chips in Auckland.', 'We believe in working with the best seasonal produce available, making and growing as much as possible \n\t\tourselves on our farm in Kumeu to provide a taste and experience that only the highest quality can achieve.', 'We look forward to welcoming you to Takapuna Beach Café where we will look after you all.'],
-	philosophy: ['Every day, there’s one thing that occupies our minds more than anything else. How to \n\t\tcreate the best possible experience for you, our guest.', 'In fact, our General Manager Irene and Head Chef Pawan – and the teams of talented, passionate people they lead – \n\t\tarrive here every single morning with one goal in mind. To create fantastic customer experiences.', 'Being passionate about provenance, much of our fresh produce gets delivered daily from our own farm in Kumeu - and \n\t\tif it hasn’t come from there, it will be from one of a close circle of hand-picked growers who are as passionate \n\t\tabout sustainable, high-quality farming as we are.', 'Our group Butcher based in Kumeu prepares most of our protein which comes directly from the farmers. \n\t\tWe know the animals have been humanely raised in a healthy, sustainable environment.', 'Our meat can now also be purchased online at www.thebutchery.co.nz. Our fish and poultry come from partners who share \n\t\tour commitment to the environment and sustainability. Our bread is handmade at The Store in Britomart by Daniel \n\t\tCruden and his team of artisan bakers.', 'Using natural, seasonal ingredients that are churned daily on site, our chefs have created a truly artisan \n\t\tgelato that has been winning national awards since 2008.', 'Our team at patisserie and dessert restaurant, Milse in Britomart, painstakingly craft all of our cakes, pastries and desserts.', 'So we hope that when you leave, our passion for provenance will have contributed to your enjoyment of the \n\tTakapuna Beach Cafe experience.'],
+	aboutUs: {
+		title: 'About Us',
+		paragraphs: ['Takapuna Beach Café is located on The Promenade at Takapuna beach with \n\t\t\tpanoramic views of Rangitoto & Waitemata Harbour.', 'We are committed to serving a menu for all occasions, freshly baked artisan bread & pastries, \n\t\t\tmulti award winning gelato & the best fish & chips in Auckland.', 'We believe in working with the best seasonal produce available, making and growing as much as possible \n\t\t\tourselves on our farm in Kumeu to provide a taste and experience that only the highest quality can achieve.', 'We look forward to welcoming you to Takapuna Beach Café where we will look after you all.']
+	},
+	philosophy: {
+		title: 'Our Philosophy',
+		paragraphs: ['Every day, there’s one thing that occupies our minds more than anything else. How to \n\t\t\tcreate the best possible experience for you, our guest.', 'In fact, our General Manager Irene and Head Chef Pawan – and the teams of talented, passionate people they lead – \n\t\t\tarrive here every single morning with one goal in mind. To create fantastic customer experiences.', 'Being passionate about provenance, much of our fresh produce gets delivered daily from our own farm in Kumeu - and \n\t\t\tif it hasn’t come from there, it will be from one of a close circle of hand-picked growers who are as passionate \n\t\t\tabout sustainable, high-quality farming as we are.', 'Our group Butcher based in Kumeu prepares most of our protein which comes directly from the farmers. \n\t\t\tWe know the animals have been humanely raised in a healthy, sustainable environment.', 'Our meat can now also be purchased online at www.thebutchery.co.nz. Our fish and poultry come from partners who share \n\t\t\tour commitment to the environment and sustainability. Our bread is handmade at The Store in Britomart by Daniel \n\t\t\tCruden and his team of artisan bakers.', 'Using natural, seasonal ingredients that are churned daily on site, our chefs have created a truly artisan \n\t\t\tgelato that has been winning national awards since 2008.', 'Our team at patisserie and dessert restaurant, Milse in Britomart, painstakingly craft all of our cakes, pastries and desserts.', 'So we hope that when you leave, our passion for provenance will have contributed to your enjoyment of the \n\t\tTakapuna Beach Cafe experience.']
+	},
 	loadGallery: function loadGallery() {
 		var self = this;
 
@@ -25418,14 +25424,8 @@ var About = React.createClass({
 
 	getInitialState: function getInitialState() {
 		return {
-			aboutUs: {
-				title: 'About Us',
-				paragraphs: AboutStore.getAboutUs()
-			},
-			philosophy: {
-				title: 'Our Philosophy',
-				paragraphs: AboutStore.getPhilosophy()
-			}
+			aboutUs: AboutStore.getAboutUs(),
+			philosophy: AboutStore.getPhilosophy()
 		};
 	},
 	render: function render() {
@@ -26036,95 +26036,6 @@ var OpeningHours = React.createClass({
 });
 'use strict';
 
-var Featured = React.createClass({
-	displayName: 'Featured',
-
-	getInitialState: function getInitialState() {
-		return HomeStore.getHome();
-	},
-	componentDidMount: function componentDidMount() {
-		HomeStore.bind('change', this.onChange);
-		HomeActions.loadHome();
-	},
-	componentWillUnmount: function componentWillUnmount() {
-		HomeStore.unbind('change', this.onChange);
-	},
-	onChange: function onChange() {
-		this.setState(HomeStore.getHome());
-	},
-	render: function render() {
-		return React.createElement(
-			'section',
-			{ className: 'featured' },
-			React.createElement(FeaturedItem, { id: 'homeFeaturedOne', sizes: '(min-width: 768px) 50vw, 100vw', img: this.state.homeFeaturedOne, text: 'Our Award Winning Menu', url: '/menu' }),
-			React.createElement(FeaturedItem, { id: 'homeFeaturedTwo', sizes: '(min-width: 768px) 25vw, (min-width: 600px) 50vw, 100vw', img: this.state.homeFeaturedTwo, text: 'Find Us', url: '/contact' }),
-			React.createElement(FeaturedItem, { id: 'homeFeaturedThree', sizes: '(min-width: 768px) 25vw, (min-width: 600px) 50vw, 100vw', img: this.state.homeFeaturedThree, text: 'Our History', url: '/about' }),
-			React.createElement(FeaturedItem, { id: 'homeFeaturedFour', img: this.state.homeFeaturedFour, text: 'Make a reservation today', url: '/contact' })
-		);
-	}
-});
-'use strict';
-
-var FeaturedItem = React.createClass({
-	displayName: 'FeaturedItem',
-
-	formatSrcSet: function formatSrcSet(img) {
-		return img.size_600 + ' 600w, ' + img.size_1200 + ' 1200w, ' + img.size_2000 + ' 2000w';
-	},
-	render: function render() {
-		return React.createElement(
-			'div',
-			{ className: 'featured-item' },
-			React.createElement(
-				Link,
-				{ to: this.props.url },
-				React.createElement(
-					'div',
-					{ className: 'img-wrapper' },
-					React.createElement('img', { id: this.props.id, srcSet: this.formatSrcSet(this.props.img), sizes: this.props.sizes, alt: "Background Image for " + this.props.text })
-				),
-				React.createElement(
-					'h3',
-					{ className: 'featured-item__text' },
-					this.props.text
-				)
-			)
-		);
-	}
-});
-'use strict';
-
-var Hero = React.createClass({
-	displayName: 'Hero',
-
-	render: function render() {
-		return React.createElement(
-			'section',
-			{ className: 'hero' },
-			React.createElement(
-				'h1',
-				{ className: 'hero__text' },
-				'Welcome to Takapuna Beach Cafe'
-			)
-		);
-	}
-});
-'use strict';
-
-var Home = React.createClass({
-	displayName: 'Home',
-
-	render: function render() {
-		return React.createElement(
-			'div',
-			{ className: 'home' },
-			React.createElement(Hero, null),
-			React.createElement(Featured, null)
-		);
-	}
-});
-'use strict';
-
 var Login = React.createClass({
 	displayName: 'Login',
 
@@ -26209,6 +26120,95 @@ var Login = React.createClass({
 					)
 				)
 			)
+		);
+	}
+});
+'use strict';
+
+var Featured = React.createClass({
+	displayName: 'Featured',
+
+	getInitialState: function getInitialState() {
+		return HomeStore.getHome();
+	},
+	componentDidMount: function componentDidMount() {
+		HomeStore.bind('change', this.onChange);
+		HomeActions.loadHome();
+	},
+	componentWillUnmount: function componentWillUnmount() {
+		HomeStore.unbind('change', this.onChange);
+	},
+	onChange: function onChange() {
+		this.setState(HomeStore.getHome());
+	},
+	render: function render() {
+		return React.createElement(
+			'section',
+			{ className: 'featured' },
+			React.createElement(FeaturedItem, { id: 'homeFeaturedOne', sizes: '(min-width: 768px) 50vw, 100vw', img: this.state.homeFeaturedOne, text: 'Our Award Winning Menu', url: '/menu' }),
+			React.createElement(FeaturedItem, { id: 'homeFeaturedTwo', sizes: '(min-width: 768px) 25vw, (min-width: 600px) 50vw, 100vw', img: this.state.homeFeaturedTwo, text: 'Find Us', url: '/contact' }),
+			React.createElement(FeaturedItem, { id: 'homeFeaturedThree', sizes: '(min-width: 768px) 25vw, (min-width: 600px) 50vw, 100vw', img: this.state.homeFeaturedThree, text: 'Our History', url: '/about' }),
+			React.createElement(FeaturedItem, { id: 'homeFeaturedFour', img: this.state.homeFeaturedFour, text: 'Make a reservation today', url: '/contact' })
+		);
+	}
+});
+'use strict';
+
+var FeaturedItem = React.createClass({
+	displayName: 'FeaturedItem',
+
+	formatSrcSet: function formatSrcSet(img) {
+		return img.size_600 + ' 600w, ' + img.size_1200 + ' 1200w, ' + img.size_2000 + ' 2000w';
+	},
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ className: 'featured-item' },
+			React.createElement(
+				Link,
+				{ to: this.props.url },
+				React.createElement(
+					'div',
+					{ className: 'img-wrapper' },
+					React.createElement('img', { id: this.props.id, srcSet: this.formatSrcSet(this.props.img), sizes: this.props.sizes, alt: "Background Image for " + this.props.text })
+				),
+				React.createElement(
+					'h3',
+					{ className: 'featured-item__text' },
+					this.props.text
+				)
+			)
+		);
+	}
+});
+'use strict';
+
+var Hero = React.createClass({
+	displayName: 'Hero',
+
+	render: function render() {
+		return React.createElement(
+			'section',
+			{ className: 'hero' },
+			React.createElement(
+				'h1',
+				{ className: 'hero__text' },
+				'Welcome to Takapuna Beach Cafe'
+			)
+		);
+	}
+});
+'use strict';
+
+var Home = React.createClass({
+	displayName: 'Home',
+
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ className: 'home' },
+			React.createElement(Hero, null),
+			React.createElement(Featured, null)
 		);
 	}
 });

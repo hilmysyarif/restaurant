@@ -25537,106 +25537,6 @@ var Home = React.createClass({
 });
 'use strict';
 
-var Header = React.createClass({
-	displayName: 'Header',
-
-	render: function render() {
-		return React.createElement(
-			'nav',
-			{ className: 'navbar navbar-default col-xs-12' },
-			React.createElement(
-				'ul',
-				{ className: 'nav navbar-nav col-xs-12 row' },
-				React.createElement(
-					'li',
-					{ className: 'col-xs-12 col-sm-3 col-md-2' },
-					React.createElement(
-						'a',
-						{ href: '/', className: 'navbar-brand' },
-						'Back to site'
-					)
-				),
-				React.createElement(
-					'li',
-					null,
-					React.createElement(
-						Link,
-						{ to: 'home' },
-						'Home'
-					)
-				),
-				React.createElement(
-					'li',
-					null,
-					React.createElement(
-						Link,
-						{ to: 'about' },
-						'About'
-					)
-				),
-				React.createElement(
-					'li',
-					null,
-					React.createElement(
-						Link,
-						{ to: 'menus' },
-						'Menus'
-					)
-				),
-				React.createElement(
-					'li',
-					null,
-					React.createElement(
-						Link,
-						{ to: 'contact' },
-						'Contact'
-					)
-				),
-				React.createElement(
-					'li',
-					null,
-					React.createElement(
-						'a',
-						{ href: '/auth/logout' },
-						'Logout'
-					)
-				)
-			)
-		);
-	}
-});
-'use strict';
-
-var ImageInput = React.createClass({
-	displayName: 'ImageInput',
-
-	render: function render() {
-		return React.createElement(
-			'div',
-			{ className: 'form-group home-inputs' },
-			React.createElement(
-				'label',
-				{ htmlFor: this.props.slug },
-				this.props.title,
-				' '
-			),
-			React.createElement(
-				'div',
-				{ className: 'preview-title' },
-				'Current Image: '
-			),
-			React.createElement('img', { src: '/images/upload/' + this.props.slug + '/600-' + this.props.slug + '.jpg', className: 'preview thumbnail' }),
-			React.createElement('input', { type: 'file', id: this.props.slug, accept: 'image/*', onChange: this.props.fileChange }),
-			React.createElement(
-				'p',
-				{ className: 'help-block' },
-				'Choose a new image (Optional)'
-			)
-		);
-	}
-});
-'use strict';
-
 var AddMenu = React.createClass({
 	displayName: 'AddMenu',
 
@@ -26106,6 +26006,106 @@ var MenusListings = React.createClass({
 				'ul',
 				{ className: 'list-group' },
 				menus
+			)
+		);
+	}
+});
+'use strict';
+
+var Header = React.createClass({
+	displayName: 'Header',
+
+	render: function render() {
+		return React.createElement(
+			'nav',
+			{ className: 'navbar navbar-default col-xs-12' },
+			React.createElement(
+				'ul',
+				{ className: 'nav navbar-nav col-xs-12 row' },
+				React.createElement(
+					'li',
+					{ className: 'col-xs-12 col-sm-3 col-md-2' },
+					React.createElement(
+						'a',
+						{ href: '/', className: 'navbar-brand' },
+						'Back to site'
+					)
+				),
+				React.createElement(
+					'li',
+					null,
+					React.createElement(
+						Link,
+						{ to: 'home' },
+						'Home'
+					)
+				),
+				React.createElement(
+					'li',
+					null,
+					React.createElement(
+						Link,
+						{ to: 'about' },
+						'About'
+					)
+				),
+				React.createElement(
+					'li',
+					null,
+					React.createElement(
+						Link,
+						{ to: 'menus' },
+						'Menus'
+					)
+				),
+				React.createElement(
+					'li',
+					null,
+					React.createElement(
+						Link,
+						{ to: 'contact' },
+						'Contact'
+					)
+				),
+				React.createElement(
+					'li',
+					null,
+					React.createElement(
+						'a',
+						{ href: '/auth/logout' },
+						'Logout'
+					)
+				)
+			)
+		);
+	}
+});
+'use strict';
+
+var ImageInput = React.createClass({
+	displayName: 'ImageInput',
+
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ className: 'form-group home-inputs' },
+			React.createElement(
+				'label',
+				{ htmlFor: this.props.slug },
+				this.props.title,
+				' '
+			),
+			React.createElement(
+				'div',
+				{ className: 'preview-title' },
+				'Current Image: '
+			),
+			React.createElement('img', { src: '/images/upload/' + this.props.slug + '/600-' + this.props.slug + '.jpg', className: 'preview thumbnail' }),
+			React.createElement('input', { type: 'file', id: this.props.slug, accept: 'image/*', onChange: this.props.fileChange }),
+			React.createElement(
+				'p',
+				{ className: 'help-block' },
+				'Choose a new image (Optional)'
 			)
 		);
 	}

@@ -5,14 +5,8 @@ var About = React.createClass({
 
 	getInitialState: function getInitialState() {
 		return {
-			aboutUs: {
-				title: 'About Us',
-				paragraphs: AboutStore.getAboutUs()
-			},
-			philosophy: {
-				title: 'Our Philosophy',
-				paragraphs: AboutStore.getPhilosophy()
-			}
+			aboutUs: AboutStore.getAboutUs(),
+			philosophy: AboutStore.getPhilosophy()
 		};
 	},
 	render: function render() {
