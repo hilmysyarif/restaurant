@@ -25003,6 +25003,8 @@ var AboutStore = {
 		slug: '',
 		id: ''
 	}],
+	aboutUs: ['Takapuna Beach Café is located on The Promenade at Takapuna beach with \n\t\tpanoramic views of Rangitoto & Waitemata Harbour.', 'We are committed to serving a menu for all occasions, freshly baked artisan bread & pastries, \n\t\tmulti award winning gelato & the best fish & chips in Auckland.', 'We believe in working with the best seasonal produce available, making and growing as much as possible \n\t\tourselves on our farm in Kumeu to provide a taste and experience that only the highest quality can achieve.', 'We look forward to welcoming you to Takapuna Beach Café where we will look after you all.'],
+	philosophy: ['Every day, there’s one thing that occupies our minds more than anything else. How to \n\t\tcreate the best possible experience for you, our guest.', 'In fact, our General Manager Irene and Head Chef Pawan – and the teams of talented, passionate people they lead – \n\t\tarrive here every single morning with one goal in mind. To create fantastic customer experiences.', 'Being passionate about provenance, much of our fresh produce gets delivered daily from our own farm in Kumeu - and \n\t\tif it hasn’t come from there, it will be from one of a close circle of hand-picked growers who are as passionate \n\t\tabout sustainable, high-quality farming as we are.', 'Our group Butcher based in Kumeu prepares most of our protein which comes directly from the farmers. \n\t\tWe know the animals have been humanely raised in a healthy, sustainable environment.', 'Our meat can now also be purchased online at www.thebutchery.co.nz. Our fish and poultry come from partners who share \n\t\tour commitment to the environment and sustainability. Our bread is handmade at The Store in Britomart by Daniel \n\t\tCruden and his team of artisan bakers.', 'Using natural, seasonal ingredients that are churned daily on site, our chefs have created a truly artisan \n\t\tgelato that has been winning national awards since 2008.', 'Our team at patisserie and dessert restaurant, Milse in Britomart, painstakingly craft all of our cakes, pastries and desserts.', 'So we hope that when you leave, our passion for provenance will have contributed to your enjoyment of the \n\tTakapuna Beach Cafe experience.'],
 	loadGallery: function loadGallery() {
 		var self = this;
 
@@ -25021,6 +25023,12 @@ var AboutStore = {
 	},
 	getGallery: function getGallery() {
 		return this.gallery;
+	},
+	getAboutUs: function getAboutUs() {
+		return this.aboutUs;
+	},
+	getPhilosophy: function getPhilosophy() {
+		return this.philosophy;
 	}
 };
 
@@ -25409,18 +25417,14 @@ var About = React.createClass({
 	displayName: 'About',
 
 	getInitialState: function getInitialState() {
-		var aboutUsText = '<p>Takapuna Beach Café is located on The Promenade at Takapuna beach with \n\t\tpanoramic views of Rangitoto & Waitemata Harbour.</p>\n\t\t<p>We are committed to serving a menu for all occasions, freshly baked artisan bread & pastries, \n\t\tmulti award winning gelato & the best fish & chips in Auckland.</p>\n\t\t<p>We believe in working with the best seasonal produce available, making and growing as much as possible \n\t\tourselves on our farm in Kumeu to provide a taste and experience that only the highest quality can achieve.</p>\n\t\t<p>We look forward to welcoming you to Takapuna Beach Café where we will look after you all.</p>';
-
-		var philosophyText = '<p>Every day, there’s one thing that occupies our minds more than anything else. How to \n\t\tcreate the best possible experience for you, our guest. </p>\n\t\t<p>In fact, our General Manager Irene and Head Chef Pawan – and the teams of talented, passionate people they lead – \n\t\tarrive here every single morning with one goal in mind. To create fantastic customer experiences.</p>\n\t\t<p>Being passionate about provenance, much of our fresh produce gets delivered daily from our own farm in Kumeu - and \n\t\tif it hasn’t come from there, it will be from one of a close circle of hand-picked growers who are as passionate \n\t\tabout sustainable, high-quality farming as we are.</p>\n\t\t<p>Our group Butcher based in Kumeu prepares most of our protein which comes directly from the farmers. \n\t\tWe know the animals have been humanely raised in a healthy, sustainable environment. </p>\n\t\t<p>Our meat can now also be purchased online at www.thebutchery.co.nz. Our fish and poultry come from partners who share \n\t\tour commitment to the environment and sustainability. Our bread is handmade at The Store in Britomart by Daniel \n\t\tCruden and his team of artisan bakers.</p>\n\t\t<p>Using natural, seasonal ingredients that are churned daily on site, our chefs have created a truly artisan \n\t\tgelato that has been winning national awards since 2008.</p>\n\t\t<p>Our team at patisserie and dessert restaurant, Milse in Britomart, painstakingly craft all of our cakes, pastries and desserts.</p>\n\t\t<p>So we hope that when you leave, our passion for provenance will have contributed to your enjoyment of the \n\t\tTakapuna Beach Cafe experience.</p>';
-
 		return {
 			aboutUs: {
 				title: 'About Us',
-				text: aboutUsText
+				paragraphs: AboutStore.getAboutUs()
 			},
 			philosophy: {
 				title: 'Our Philosophy',
-				text: philosophyText
+				paragraphs: AboutStore.getPhilosophy()
 			}
 		};
 	},
@@ -25431,8 +25435,8 @@ var About = React.createClass({
 			React.createElement(
 				'section',
 				{ className: 'about-content' },
-				React.createElement(AboutBlock, { title: this.state.aboutUs.title, text: this.state.aboutUs.text }),
-				React.createElement(AboutBlock, { title: this.state.philosophy.title, text: this.state.philosophy.text })
+				React.createElement(AboutBlock, { title: this.state.aboutUs.title, paragraphs: this.state.aboutUs.paragraphs }),
+				React.createElement(AboutBlock, { title: this.state.philosophy.title, paragraphs: this.state.philosophy.paragraphs })
 			),
 			React.createElement(Gallery, null)
 		);
@@ -25444,6 +25448,14 @@ var AboutBlock = React.createClass({
 	displayName: 'AboutBlock',
 
 	render: function render() {
+		var paragraphs = this.props.paragraphs.map(function (paragraph) {
+			return React.createElement(
+				'p',
+				null,
+				paragraph
+			);
+		});
+
 		return React.createElement(
 			'article',
 			{ className: 'about-block' },
@@ -25452,7 +25464,11 @@ var AboutBlock = React.createClass({
 				{ className: 'title-block' },
 				this.props.title
 			),
-			React.createElement('div', { className: 'about-block__text', dangerouslySetInnerHTML: { __html: this.props.text } })
+			React.createElement(
+				'div',
+				{ className: 'about-block__text' },
+				paragraphs
+			)
 		);
 	}
 });
@@ -26109,6 +26125,95 @@ var Home = React.createClass({
 });
 'use strict';
 
+var Login = React.createClass({
+	displayName: 'Login',
+
+	getInitialState: function getInitialState() {
+		return LoginStore.getLoginForm();
+	},
+	componentDidMount: function componentDidMount() {
+		LoginStore.bind('change', this.onChange);
+	},
+	componentWillUnmount: function componentWillUnmount() {
+		LoginStore.unbind('change', this.onChange);
+	},
+	onChange: function onChange() {
+		this.setState(LoginStore.getLoginForm());
+	},
+	changeEmail: function changeEmail(e) {
+		LoginActions.changeLoginEmail(e.target.value);
+	},
+	changePassword: function changePassword(e) {
+		LoginActions.changePassword(e.target.value);
+	},
+	onSubmit: function onSubmit(e) {
+		e.preventDefault();
+		LoginActions.login();
+	},
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ className: 'login' },
+			React.createElement(
+				'div',
+				{ className: 'panel panel-default' },
+				React.createElement(
+					'h1',
+					{ className: 'panel-heading' },
+					'Login'
+				),
+				React.createElement(
+					'form',
+					{ noValidate: true, className: 'panel-body', onSubmit: this.onSubmit },
+					React.createElement(
+						'div',
+						{ className: 'form-group' },
+						React.createElement(
+							'label',
+							{ htmlFor: 'email', className: 'control-label' },
+							'Email: '
+						),
+						React.createElement('input', {
+							type: 'email',
+							id: 'email',
+							className: 'form-control',
+							value: this.state.email,
+							onChange: this.changeEmail
+						})
+					),
+					React.createElement(
+						'div',
+						{ className: 'form-group' },
+						React.createElement(
+							'label',
+							{ htmlFor: 'password', className: 'control-label' },
+							'Password: '
+						),
+						React.createElement('input', {
+							type: 'password',
+							id: 'password',
+							className: 'form-control',
+							value: this.state.password,
+							onChange: this.changePassword
+						})
+					),
+					React.createElement('input', { type: 'submit', value: 'Login', className: 'btn btn-default' }),
+					React.createElement(
+						'div',
+						{ className: 'response-messages' },
+						React.createElement(
+							'span',
+							{ className: this.state.failed ? 'text-danger' : 'hidden' },
+							'Incorrect login details. Message joshua.yp.huang@gmail.com for a demo login'
+						)
+					)
+				)
+			)
+		);
+	}
+});
+'use strict';
+
 var Menu = React.createClass({
 	displayName: 'Menu',
 
@@ -26247,95 +26352,6 @@ var MenuSection = React.createClass({
 				'ul',
 				{ className: 'menu__items' },
 				items
-			)
-		);
-	}
-});
-'use strict';
-
-var Login = React.createClass({
-	displayName: 'Login',
-
-	getInitialState: function getInitialState() {
-		return LoginStore.getLoginForm();
-	},
-	componentDidMount: function componentDidMount() {
-		LoginStore.bind('change', this.onChange);
-	},
-	componentWillUnmount: function componentWillUnmount() {
-		LoginStore.unbind('change', this.onChange);
-	},
-	onChange: function onChange() {
-		this.setState(LoginStore.getLoginForm());
-	},
-	changeEmail: function changeEmail(e) {
-		LoginActions.changeLoginEmail(e.target.value);
-	},
-	changePassword: function changePassword(e) {
-		LoginActions.changePassword(e.target.value);
-	},
-	onSubmit: function onSubmit(e) {
-		e.preventDefault();
-		LoginActions.login();
-	},
-	render: function render() {
-		return React.createElement(
-			'div',
-			{ className: 'login' },
-			React.createElement(
-				'div',
-				{ className: 'panel panel-default' },
-				React.createElement(
-					'h1',
-					{ className: 'panel-heading' },
-					'Login'
-				),
-				React.createElement(
-					'form',
-					{ noValidate: true, className: 'panel-body', onSubmit: this.onSubmit },
-					React.createElement(
-						'div',
-						{ className: 'form-group' },
-						React.createElement(
-							'label',
-							{ htmlFor: 'email', className: 'control-label' },
-							'Email: '
-						),
-						React.createElement('input', {
-							type: 'email',
-							id: 'email',
-							className: 'form-control',
-							value: this.state.email,
-							onChange: this.changeEmail
-						})
-					),
-					React.createElement(
-						'div',
-						{ className: 'form-group' },
-						React.createElement(
-							'label',
-							{ htmlFor: 'password', className: 'control-label' },
-							'Password: '
-						),
-						React.createElement('input', {
-							type: 'password',
-							id: 'password',
-							className: 'form-control',
-							value: this.state.password,
-							onChange: this.changePassword
-						})
-					),
-					React.createElement('input', { type: 'submit', value: 'Login', className: 'btn btn-default' }),
-					React.createElement(
-						'div',
-						{ className: 'response-messages' },
-						React.createElement(
-							'span',
-							{ className: this.state.failed ? 'text-danger' : 'hidden' },
-							'Incorrect login details. Message joshua.yp.huang@gmail.com for a demo login'
-						)
-					)
-				)
 			)
 		);
 	}

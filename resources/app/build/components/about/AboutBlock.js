@@ -4,6 +4,14 @@ var AboutBlock = React.createClass({
 	displayName: 'AboutBlock',
 
 	render: function render() {
+		var paragraphs = this.props.paragraphs.map(function (paragraph) {
+			return React.createElement(
+				'p',
+				null,
+				paragraph
+			);
+		});
+
 		return React.createElement(
 			'article',
 			{ className: 'about-block' },
@@ -12,7 +20,11 @@ var AboutBlock = React.createClass({
 				{ className: 'title-block' },
 				this.props.title
 			),
-			React.createElement('div', { className: 'about-block__text', dangerouslySetInnerHTML: { __html: this.props.text } })
+			React.createElement(
+				'div',
+				{ className: 'about-block__text' },
+				paragraphs
+			)
 		);
 	}
 });

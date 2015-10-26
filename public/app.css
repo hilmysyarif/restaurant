@@ -6733,7 +6733,8 @@ ul {
   text-align: center;
   font-weight: bold;
   font-family: "Roboto Slab", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  padding: 0 1.69492%; }
+  padding: 0 1.69492%;
+  text-shadow: 1px 1px 1px black; }
 
 .featured {
   width: 100%;
@@ -6881,7 +6882,7 @@ ul {
       clear: both;
       padding: 1.69492% 0;
       width: 83.05085%;
-      font-size: 1.25em; } }
+      font-size: 1.125em; } }
 
 .menu-nav {
   width: 100%;
